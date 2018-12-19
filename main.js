@@ -139,7 +139,7 @@ const help = {
         title: "ping",
         description: "*Ping the bot*\n**Usage**:\n`ping`\n**Example**:\n`!ping`",
         color: 0x1D82B6
-    }, 
+    },
     "roll": {
         title: "roll",
         description: "*Roll the dice*\n**Usage**:\n`roll`\n**Example**:\n`!roll`",
@@ -420,7 +420,7 @@ const games = {
                 thumbnail: {url: "www.google.com"},
                 description: "**__description__**\n\n\n**__Release__**\n\n\n**__Developer__**\n\n\n**__Website__**\n"
             }
-       },   
+       },
          "": {
              embed: {
                 title: "",
@@ -592,9 +592,36 @@ function capper(string, option) {
 }
 
 // Const
-const Random = ["https://i.imgur.com/BZhCIrX.gif", "https://i.imgur.com/VkCWPV2.gif", "https://i.imgur.com/3X9dmME.gif", "https://i.imgur.com/Gd2pPvf.gif", "https://i.imgur.com/S8b93f1.gif", "https://i.imgur.com/K8IuaSM.gif", "https://i.imgur.com/YB3y4MT.gif", "http://i.imgur.com/OTAeXcf.jpg", "http://i.imgur.com/ZYn8zWH.jpg", "http://i.imgur.com/piDWdUz.jpg", "https://i.imgur.com/aZtGZHN.gif", "https://i.imgur.com/TBShA0f.gif", "https://i.imgur.com/1I5LTqm.gif", "https://i.imgur.com/KDOE0hn.gif", "https://i.imgur.com/1iVFb8H.gif", "https://i.imgur.com/N8ShK7X.gif", "https://i.imgur.com/OlNdzhV.gif", "https://i.imgur.com/4mBnmEy.gif", "https://i.imgur.com/TPinfUc.gif"];
+const Random = ["https://i.imgur.com/BZhCIrX.gif",
+                "https://i.imgur.com/VkCWPV2.gif",
+                "https://i.imgur.com/3X9dmME.gif",
+                "https://i.imgur.com/Gd2pPvf.gif",
+                "https://i.imgur.com/S8b93f1.gif",
+                "https://i.imgur.com/K8IuaSM.gif",
+                "https://i.imgur.com/YB3y4MT.gif",
+                "http://i.imgur.com/OTAeXcf.jpg",
+                "http://i.imgur.com/ZYn8zWH.jpg",
+                "http://i.imgur.com/piDWdUz.jpg",
+                "https://i.imgur.com/aZtGZHN.gif",
+                "https://i.imgur.com/TBShA0f.gif",
+                "https://i.imgur.com/1I5LTqm.gif",
+                "https://i.imgur.com/KDOE0hn.gif",
+                "https://i.imgur.com/1iVFb8H.gif",
+                "https://i.imgur.com/N8ShK7X.gif",
+                "https://i.imgur.com/OlNdzhV.gif",
+                "https://i.imgur.com/4mBnmEy.gif",
+                "https://i.imgur.com/TPinfUc.gif"];
 
-const Dog = ["https://i.imgur.com/xhcCg7a.jpg", "https://i.imgur.com/XMPh4JW.jpg", "https://i.imgur.com/aArK2iB.jpg", "https://i.imgur.com/mT9QBVd.jpg", "https://i.imgur.com/77L3O3j.jpg", "https://i.imgur.com/h9vW5Ul.jpg", "https://i.imgur.com/ZgFwtCJ.jpg", "https://i.imgur.com/EzPOGXv.jpg", "https://i.imgur.com/MfdfllP.jpg", "https://i.imgur.com/am0IK2X.jpg"];
+const Dog = ["https://i.imgur.com/xhcCg7a.jpg",
+             "https://i.imgur.com/XMPh4JW.jpg",
+             "https://i.imgur.com/aArK2iB.jpg",
+             "https://i.imgur.com/mT9QBVd.jpg",
+             "https://i.imgur.com/77L3O3j.jpg",
+             "https://i.imgur.com/h9vW5Ul.jpg",
+             "https://i.imgur.com/ZgFwtCJ.jpg",
+             "https://i.imgur.com/EzPOGXv.jpg",
+             "https://i.imgur.com/MfdfllP.jpg",
+             "https://i.imgur.com/am0IK2X.jpg"];
 
 const Roll = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10']
 
@@ -719,7 +746,7 @@ client.on('message', async message=>{
             return message.channel.send('Invalid command usage. The `suggest` commands accepted format is: `${prefix}suggest <suggestion>` or `@Tiger#4773  suggest <suggestion>`. Use `${prefix}help suggest` or `@Tiger#4773  help suggest` for more information.');
 
 	const embed = new Discord.RichEmbed().setColor(0x000000).setFooter('✅ Yes').setFooter('❌ No').setFooter('React to vote').setDescription(args.join(' ')).setTitle(`Poll created by: ${message.author.username}`);
-	    
+
         let msg = await message.channel.send(embed);
 
         await msg.react('✅');
@@ -817,7 +844,7 @@ client.on('message', async message=>{
                 }
             })
         if (!Object.keys(games).includes(args[0].toLowerCase())) {
-          
+
             args[0] = args.join(" ");
             var game = null;
             Object.keys(games).forEach((x)=>{
@@ -825,7 +852,7 @@ client.on('message', async message=>{
                     if (z == args[0].toLowerCase() || games[x][z].title && games[x][z].embed.title.toLowerCase() == args[0].toLowerCase()) {
                         return game = games[x][z];
                     } else {
-						
+
 					}
                 }
                 )
@@ -848,7 +875,16 @@ client.on('message', async message=>{
     // Help
     if (msg.startsWith(prefix + 'HELP')) {
         if (!args[0]) {
-            var embed = new Discord.RichEmbed().setAuthor('Tiger Commands').addField('**__Help Command__**', '**Help [command]**:  provides help for a command').addField('**__Misc__** »', '**Roll**: Roll the dice.\n**Userinfo**: Get user informations.\n**Serverinfo**: Get server info/stats.\n**Membercount**: Get the server member count.').addField('**__Manager__** »', '~~**listmods**: List moderators~~ :tools:\n**Prefix**: Set prefix for server.\n**Setnick**: Change the nickname of a user.\n**Purge**: Delete a number of messages from a channel.').addField('**__Info__** »', '**About**: Get bot info').addField('**__Moderator__** »', '**Ban**: Ban a member.\n**Kick**: Kick a member.\n**Warn**: Warn a member.\n**Mute**: Mute a member so they cannot type or speak, time limit in minutes.').addField('**__Fun__** »', '**Cat**: Find some cute cat pictures.\n**Dog**: Find some cute dog pictures.\n**Weather**: Get the forecast information for a location.').setColor(0x1D82B6).setThumbnail('https://images-ext-2.discordapp.net/external/L_1jxUimTurAFBToL11TK_LhYfHNDOeCt3GGCg5OwLw/http/i.imgur.com/S8WFdPc.png?width=80&height=80')
+            var embed = new Discord.RichEmbed()
+            .setAuthor('Tiger Commands')
+            .addField('**__Help Command__**', '**Help [command]**:  provides help for a command')
+            .addField('**__Misc__** »', '**Roll**: Roll the dice.\n**Userinfo**: Get user informations.\n**Serverinfo**: Get server info/stats.\n**Membercount**: Get the server member count.')
+            .addField('**__Manager__** »', '~~**listmods**: List moderators~~ :tools:\n**Prefix**: Set prefix for server.\n**Setnick**: Change the nickname of a user.\n**Purge**: Delete a number of messages from a channel.')
+            .addField('**__Info__** »', '**About**: Get bot info')
+            .addField('**__Moderator__** »', '**Ban**: Ban a member.\n**Kick**: Kick a member.\n**Warn**: Warn a member.\n**Mute**: Mute a member so they cannot type or speak, time limit in minutes.')
+            .addField('**__Fun__** »', '**Cat**: Find some cute cat pictures.\n**Dog**: Find some cute dog pictures.\n**Weather**: Get the forecast information for a location.')
+            .setColor(0x1D82B6)
+            .setThumbnail('https://images-ext-2.discordapp.net/external/L_1jxUimTurAFBToL11TK_LhYfHNDOeCt3GGCg5OwLw/http/i.imgur.com/S8WFdPc.png?width=80&height=80')
             message.author.send({
                 embed
             });
@@ -888,7 +924,19 @@ client.on('message', async message=>{
     // About
     if (msg.startsWith(prefix + 'ABOUT')) {
 
-        var embed = new Discord.RichEmbed().setAuthor("Bot About »", client.user.avatarURL).addField("Commands »", prefix + "help", true).addField("Version »", version, true).addField("Library »", library).addField("Creator »", "๖̶̶̶ζ͜͡Dr.Harimau#4361").addField("Servers Count »", `${client.guilds.size}`).addField("Users Count »", `${client.users.size}`).addField("Website »", ':tools:').setColor(0x1D82B6).setThumbnail(client.user.avatarURL).setTimestamp().setFooter("Tiger About", client.user.avatarURL)
+        var embed = new Discord.RichEmbed()
+        .setAuthor("Bot About »", client.user.avatarURL)
+        .addField("Commands »", prefix + "help", true)
+        .addField("Version »", version, true)
+        .addField("Library »", library)
+        .addField("Creator »", "๖̶̶̶ζ͜͡Dr.Harimau#4361")
+        .addField("Servers Count »", `${client.guilds.size}`)
+        .addField("Users Count »", `${client.users.size}`)
+        .addField("Website »", ':tools:')
+        .setColor(0x1D82B6)
+        .setThumbnail(client.user.avatarURL)
+        .setTimestamp()
+        .setFooter("Tiger About", client.user.avatarURL)
         message.channel.send(embed);
         console.log(`${message.author.tag} use the about command!`)
     }
@@ -1174,7 +1222,7 @@ Sending this message.....
         )
         console.log(`${message.author.tag} use the adv command!`)
     }
-  
+
 
     // Reload
     if (msg.startsWith(prefix + 'RELOAD')) {
