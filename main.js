@@ -748,8 +748,8 @@ client.on('message', async message=>{
               .setAuthor("Server Suggestion", client.user.avatarURL)
               .addField("Suggestion", args.join(' '))
               .addField("Suggested By", 'Username:' `${message.author.username}`, 'ID:' `${message.author.id}`)
-	const embed = new Discord.RichEmbed()
-  ;
+	      .setColor(0x1D82B6)
+	      .setTimestamp()
 
         let msg = await message.channel.send(embed);
 
