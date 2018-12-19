@@ -745,12 +745,11 @@ client.on('message', async message=>{
         if (!args[0])
             return message.channel.send('Invalid command usage. The `suggest` commands accepted format is: `${prefix}suggest <suggestion>` or `@Tiger#4773  suggest <suggestion>`. Use `${prefix}help suggest` or `@Tiger#4773  help suggest` for more information.');
             var embed = new Discord.RichEmbed()
-              .setAuthor("Server Suggestion", client.user.avatarURL)
-              .addField("Suggestion", args.join(' '))
-              .addField("Suggested By", "Username:" `${message.author.username}`\n"ID:" `${message.author.id}`)
+              .setAuthor('Server Suggestion', client.user.avatarURL)
+              .addField('Suggestion', args.join(' '))
+              .addField('Suggested By','**Username**:' `${message.author.username}`\n'**ID**:' `${message.author.id}`)
 	            .setColor(0x1D82B6)
 	            .setTimestamp()
-
         let msg = await message.channel.send(embed);
 
         await msg.react('✅');
