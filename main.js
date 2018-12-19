@@ -747,9 +747,9 @@ client.on('message', async message=>{
             var embed = new Discord.RichEmbed()
               .setAuthor("Server Suggestion", client.user.avatarURL)
               .addField("Suggestion", args.join(' '))
-              .addField("Suggested By", "Username:" `${message.author.username}`, "ID:" `${message.author.id}`)
-	      .setColor(0x1D82B6)
-	      .setTimestamp()
+              .addField("Suggested By", "Username:" `${message.author.username}`\n"ID:" `${message.author.id}`)
+	            .setColor(0x1D82B6)
+	            .setTimestamp()
 
         let msg = await message.channel.send(embed);
 
