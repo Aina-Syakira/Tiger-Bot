@@ -748,6 +748,7 @@ client.on('message', async message=>{
               .setAuthor('Server Suggestion', client.user.avatarURL)
               .addField('Suggestion', args.join(' '))
               .addField('Suggested By', `${message.author.username}`)
+              .setFooter('Username')
 	            .setColor(0x1D82B6)
 	            .setTimestamp()
         let msg = await message.channel.send(embed);
