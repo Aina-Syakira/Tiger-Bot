@@ -744,8 +744,12 @@ client.on('message', async message=>{
     if (msg.startsWith(prefix + "SUGGEST")) {
         if (!args[0])
             return message.channel.send('Invalid command usage. The `suggest` commands accepted format is: `${prefix}suggest <suggestion>` or `@Tiger#4773  suggest <suggestion>`. Use `${prefix}help suggest` or `@Tiger#4773  help suggest` for more information.');
-
-	const embed = new Discord.RichEmbed().setColor(0x000000).setFooter('✅ Yes').setFooter('❌ No').setFooter('React to vote').setDescription(args.join(' ')).setTitle(`Poll created by: ${message.author.username}`);
+            var embed = new Discord.RichEmbed()
+              .setAuthor("Server Suggestion", client.user.avatarURL)
+              .addField("Suggestion", args.join(' '))
+              .addField("Suggested By", 'Username:' `${message.author.username}`, 'ID:' `${message.author.id}`)
+	const embed = new Discord.RichEmbed()
+  ;
 
         let msg = await message.channel.send(embed);
 
