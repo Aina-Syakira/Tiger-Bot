@@ -1,0 +1,47 @@
+    if (msg.startsWith(prefix + "GAME")) {
+        //if (!args[0] || !games[args[0].toLowerCase()])
+        //    return message.channel.send(`Correct Syntax: ${prefix}game <${Object.keys(games).join("|")}> <game>`);
+        if (games[args[0].toLowerCase()] && !args[1])
+            return message.channel.send({
+                embed: {
+                    title: capper(args[0]) + " games",
+                    color: 0x1D82B6,
+                    description: (function() {
+                        var a = '';
+                        Object.keys(games[args[0].toLowerCase()]).forEach((x,i)=>{
+                            a += `**${i + 1})** ${games[args[0].toLowerCase()][x].embed && games[args[0].toLowerCase()][x].embed.title ? capper(games[args[0].toLowerCase()][x].embed.title) : capper(x)} ${(games[args[0].toLowerCase()][x].embed && games[args[0].toLowerCase()][x].embed.url ? "(" + games[args[0].toLowerCase()][x].embed.url + ")" : '')}\n[ID]: \`${x}\`\n`
+                        }
+                        );
+                        return (a !== '' ? a : 'No games currently added');
+                    }
+                    )()
+                }
+            })
+        if (!Object.keys(games).includes(args[0].toLowerCase())) {
+
+            args[0] = args.join(" ");
+            var game = null;
+            Object.keys(games).forEach((x)=>{
+                Object.keys(games[x]).forEach((z)=>{
+                    if (z == args[0].toLowerCase() || games[x][z].title && games[x][z].embed.title.toLowerCase() == args[0].toLowerCase()) {
+                        return game = games[x][z];
+                    } else {
+
+					}
+                }
+                )
+            }
+            )
+            if (!game) return message.channel.send(`Correct Syntax: ${prefix}game <${Object.keys(games).join("|")}> <game>`);
+            game.embed.color = 0x1D82B6;
+            return message.channel.send(game);
+        } else {
+            if (args[1] && games[args[0].toLowerCase()][args[1].toLowerCase()]) {
+                if (games[args[0].toLowerCase()][args[1].toLowerCase()].embed)
+                    games[args[0].toLowerCase()][args[1].toLowerCase()].embed.color = 0x1D82B6;
+                return message.channel.send(games[args[0].toLowerCase()][args[1].toLowerCase()]);
+            } else {
+                return message.channel.send(`Correct Syntax: ${prefix}game <${Object.keys(games).join("|")}> <game>`);
+            }
+        }
+    }
